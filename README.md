@@ -6,4 +6,4 @@ If you reach the water, you win and the player will be reset.
 
 
 ## Controls
-Use the arrow keys to move 
+Use the arrow keys to move.
