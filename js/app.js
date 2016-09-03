@@ -12,7 +12,7 @@ var Enemy = function(x,y) {
     this.y = y;
     this.height = 55;
     this.width = 75;
-    this.velocity = (Math.random()*350) + 100;
+    this.velocity = (Math.random()*350) + 120;
 };
 
 // Update the enemy's position, required method for game
@@ -52,12 +52,12 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+//moves the player using arrow key inputs
 Player.prototype.handleInput = function(key) {
     switch(key) {
         case 'left':
             if (this.x > 0){
                 this.x -=101;
-                console.log('x position', this.x);
             }
             else {
                 console.log('out of bounds!');
@@ -66,7 +66,6 @@ Player.prototype.handleInput = function(key) {
         case 'right':
             if (this.x < 400){
                 this.x +=101;
-                console.log('x position', this.x);
             }
             else {
                 console.log('out of bounds!');
@@ -74,12 +73,10 @@ Player.prototype.handleInput = function(key) {
             break;
         case 'up':
             this.y -=83;
-            console.log('y position', this.y);
             break;
         case 'down':
             if (this.y < 400){
                 this.y +=83; 
-                console.log('y position', this.y); 
             }
             else {
                 console.log('out of bounds!')
@@ -130,10 +127,10 @@ document.addEventListener('keyup', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
 });
 
-//this function sets the collision conditions
+//ifCollision sets the criteria for a collision
 var ifCollision = function() {
     for (var i = 0; i < allEnemies.length; i++) {
-        if (player.x < allEnemies[i].x + 90 && //
+        if (player.x < allEnemies[i].x + 90 && 
             player.x + 75 > allEnemies[i].x && 
             player.y < allEnemies[i].y + 70 && 
             70 + player.y > allEnemies[i].y) { 
